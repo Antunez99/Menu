@@ -59,7 +59,7 @@ class App extends React.Component{
           this.setState({menu: <Dashboard />, title: 'Dashboard'})
           break;
         case 'donia':
-          this.setState({menu: <Donias />, title: 'Administracion de doñas'})
+          this.setState({menu: <Donias />, title: 'Administracion de usuarios'})
           break;
         case 'ordenes':
           this.setState({menu: <Ordenes />, title: 'Administracion de ordenes'})
@@ -83,19 +83,25 @@ class App extends React.Component{
                 onSelect={(selectedKey) => this.screen(selectedKey)}
                 >
                   <Nav.Item>
-                    <Nav.Link href="dashboard">Dashboard</Nav.Link>
+                    <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="donia">Doñas admin</Nav.Link>
+                    <Nav.Link eventKey="donia">Administrador</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="comidas">Comidas admin</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="ordenes">Ordenes admin</Nav.Link>
+                    <Nav.Link eventKey="ordenes">Restaurantes</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="faqs">FAQ'S</Nav.Link>
+                    <Nav.Link href="/#" onClick={()=> { this.state.firebase.auth.signOut().then (success=>{
+                                                 this.setState({
+                                                autenticado: false
+                                            })
+                                        })
+                                    }
+                    }>Salir</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Col>
@@ -104,13 +110,6 @@ class App extends React.Component{
                 <h1>{this.state.title}</h1>
                 {this.state.menu}
               </Col>
-              <button  href="/#" onClick={()=> { this.state.firebase.auth.signOut().then (success=>{
-                                                 this.setState({
-                                                autenticado: false
-                                            })
-                                        })
-                                    }
-                    }>Salir</button>
             </Row>
           </Container>
         </div>
