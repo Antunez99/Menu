@@ -56,7 +56,7 @@ class App extends React.Component{
   screen(option){
       switch (option){
         case 'dashboard':
-          this.setState({menu: <Dashboard />, title: 'Dashboard'})
+          this.setState({menu: <Dashboard id={this.state.usuario}/>, title: 'Inicio'})
           break;
         case 'donia':
           this.setState({menu: <Donias />, title: 'Administracion de usuarios'})

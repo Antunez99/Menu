@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import MaterialTable from 'material-table';
 //import './App.css';
 import {Container} from 'reactstrap';
+import FileUpload from '../FileUpload';
+
 
 import {db, createComidas,updateComidas,deleteComidas} from '../services'
 
@@ -50,20 +52,30 @@ export class App extends Component {
                         title="Comidas"
                         columns={[
                         
-                            { title: 'Menu', field: 'Menu'},
+                            { title: 'Menu', field: 'Menu' },
                             {title: 'Descripcion', field: 'Descripcion'},
-                            {title: 'precio', field: 'Precio'},
-                            {title: 'Foto', field: 'foto'},
+                            {title: 'precio', field: 'Precio', },
                             {hidden: true, title: 'id', field: 'id'},
                             {
-                              title: 'Avatar',
-                              field: 'avatar',
+                              title: 'Foto ',
+                              initialEditValue:'No Escribir', field: 'foto' , 
+                              
                               render: rowData => (
-                                <img  style={{ height: 36, borderRadius: '50%' }} src={rowData.avatar}/>
+                                <img  style={{ height: 36, borderRadius: '50%' }} src={rowData.foto}/>  
+                                
                               ),
+
                             },
-        
+                            {
+                              title: 'Subir Foto ',
+                              field: 'subir foto' ,
+                              render: rowData => (
+                                <FileUpload id={rowData.id}/> 
+                              ),
+                              
+                            }
                           ]}
+                          
                           
                         data={this.state.DATA}                        
 
@@ -114,9 +126,8 @@ export class App extends Component {
                     options={{actionsColumnIndex: -1}}
                     
                     />
-                  
-            </Container>
 
+            </Container>
         )
     }
 }
