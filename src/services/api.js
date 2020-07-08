@@ -53,7 +53,7 @@ export async function deleteRestaurante(id,data){
     .doc(id)
     .delete();
 }
-export async function createRestaurante(id,data){
+export async function createRestaurante(id,data,){
     return await db
     .collection('restaurantes')
     .doc(id)

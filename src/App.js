@@ -58,14 +58,14 @@ class App extends React.Component{
         case 'dashboard':
           this.setState({menu: <Dashboard id={this.state.usuario}/>, title: 'Inicio'})
           break;
-        case 'donia':
-          this.setState({menu: <Donias />, title: 'Administracion de usuarios'})
-          break;
+        //case 'donia':
+        //  this.setState({menu: <Donias id={this.state.usuario} />, title: 'Administracion de usuarios'})
+          //break;
         case 'ordenes':
-          this.setState({menu: <Ordenes />, title: 'Administracion de ordenes'})
+          this.setState({menu: <Ordenes id={this.state.usuario} />, title: 'Administracion de ordenes'})
           break;
         case 'comidas':
-          this.setState({menu: <Comidas />, title: 'Administracion de comidas'})
+          this.setState({menu: <Comidas id={this.state.usuario} />, title: 'Administracion de comidas'})
           break;
       }
   }
@@ -78,6 +78,7 @@ class App extends React.Component{
             <Row>
               <Col className='Menu' xs={3}>
                 <Image src={require('./logo.png')} width='180' height='180' roundedCircle  />
+                
                 <h3>Panel de administracion </h3>
                 <Nav justify variant="tabs" defaultActiveKey="dashboard" className="flex-column"
                 onSelect={(selectedKey) => this.screen(selectedKey)}
@@ -86,13 +87,10 @@ class App extends React.Component{
                     <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="donia">Administrador</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
                     <Nav.Link eventKey="comidas">Comidas admin</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="ordenes">Restaurantes</Nav.Link>
+                    <Nav.Link id={this.state.usuario} eventKey="ordenes">Restaurantes</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link href="/#" onClick={()=> { this.state.firebase.auth.signOut().then (success=>{
@@ -107,12 +105,13 @@ class App extends React.Component{
               </Col>
               
               <Col className='Gestion' xs={9}>
-                <h1>{this.state.title}</h1>
+                <h1 style={{fontFamily: 'Holtwood One SC, serif'}}>{this.state.title}</h1>
                 {this.state.menu}
               </Col>
             </Row>
           </Container>
         </div>
+        
         
         
       ):<div id="firebaseui-auth-container"></div>

@@ -3,6 +3,7 @@ import MaterialTable from 'material-table';
 //import './App.css';
 import {Container} from 'reactstrap';
 import FileUpload from '../FileUpload';
+ 
 
 
 import {db, createComidas,updateComidas,deleteComidas} from '../services'
@@ -21,6 +22,7 @@ export class App extends Component {
         const serv = []; //array para almacernar la consulta a firebase
         const id = []; 
         db.collection('comidas')
+        .where("correo","==", this.props.id)
         .onSnapshot({ includeMetadataChanges: true }, function(querySnapshot){
           var serv = [];
           querySnapshot.forEach(function(doc) {
@@ -55,17 +57,11 @@ export class App extends Component {
                             { title: 'Menu', field: 'Menu' },
                             {title: 'Descripcion', field: 'Descripcion'},
                             {title: 'precio', field: 'Precio', },
+                            {hidden: true, title: 'correo', field: 'correo'},
                             {hidden: true, title: 'id', field: 'id'},
-                            {
-                              title: 'Foto ',
-                              initialEditValue:'No Escribir', field: 'foto' , 
-                              
+                            { title: 'Foto ', initialEditValue:'No Escribir', field: 'foto' ,
                               render: rowData => (
-                                <img  style={{ height: 36, borderRadius: '50%' }} src={rowData.foto}/>  
-                                
-                              ),
-
-                            },
+                              <img  style={{ height: 36, borderRadius: '50%' }} src={rowData.foto}/>   ),  },
                             {
                               title: 'Subir Foto ',
                               field: 'subir foto' ,
