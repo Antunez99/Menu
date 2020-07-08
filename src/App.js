@@ -84,7 +84,7 @@ class App extends React.Component{
                 onSelect={(selectedKey) => this.screen(selectedKey)}
                 >
                   <Nav.Item>
-                    <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
+                    <Nav.Link eventKey="dashboard">Inicio</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="comidas">Comidas admin</Nav.Link>

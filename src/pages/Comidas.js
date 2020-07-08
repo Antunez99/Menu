@@ -55,8 +55,6 @@ export class App extends Component {
                         columns={[
                         
                             { title: 'Menu', field: 'Menu' },
-                            {title: 'Descripcion', field: 'Descripcion'},
-                            {title: 'precio', field: 'Precio', },
                             {hidden: true, title: 'correo', field: 'correo'},
                             {hidden: true, title: 'id', field: 'id'},
                             { title: 'Foto ', initialEditValue:'No Escribir', field: 'foto' ,
@@ -84,7 +82,7 @@ export class App extends Component {
                                 setTimeout(() => {
                                   var aleatorio='C'+Math.random()
                                   newData.id = aleatorio.toString()
-                                //newData.correo = this.state.id[newData.correo]
+                                  newData.correo = this.props.id
                                 //newData.tipo= this.state.check[newData.tipo]
                                 newData.date = new Date();
                                 
