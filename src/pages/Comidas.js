@@ -32,6 +32,7 @@ export class App extends Component {
             //serv.push(ids);
           });
           this.setState({DATA: serv, id: id}) // se envian los arrays al state
+          
         }.bind(this));
       }
     
@@ -43,6 +44,7 @@ export class App extends Component {
 
     
     render() {
+      console.log(this.state.DATA)
         return (       
             <Container>
                 <br/><br/><br/>
@@ -55,6 +57,7 @@ export class App extends Component {
                         columns={[
                         
                             { title: 'Menu', field: 'Menu' },
+                            { title: 'Descripcion', field: 'descripcion' },
                             {hidden: true, title: 'correo', field: 'correo'},
                             {hidden: true, title: 'id', field: 'id'},
                             { title: 'Foto ', initialEditValue:'No Escribir', field: 'foto' ,

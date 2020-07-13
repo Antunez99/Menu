@@ -54,6 +54,7 @@ export class App extends Component {
 
     
     render() {
+      console.log(this.state.DATA)
         return (       
             <Container>
                 <br/><br/><br/>
